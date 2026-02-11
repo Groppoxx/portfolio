@@ -163,6 +163,10 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {/* Experience Cards */}
             <div className="space-y-4">
+              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+                <span className="cyber-accent">{'>>'}</span>{' '}
+                <span className="text-foreground">Professional Experience</span>
+              </h3>
               {/* Job 1 */}
               <div className="bg-card cyber-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-colors">
                 <div className="flex justify-between items-start mb-3">
@@ -347,10 +351,10 @@ export default function Portfolio() {
                     link: 'https://github.com/Groppoxx/VPN-Manager.git'
                   },
                   {
-                    title: 'Modelo de Predicción de Criptomonedas de Baja Capitalización (CryptoProphet)',
-                    desc: 'Participación en el análisis exploratorio y procesamiento de datos de criptomonedas de baja capitalización, apoyando la creación de visualizaciones interactivas y el desarrollo de componentes clave de la aplicación web, incluyendo un panel de control para la visualización de predicciones y métricas relevantes.',
-                    tech: ['Python', 'Jupyter Notebook'],
-                    link: 'https://github.com/AndrePilcoChiuyare/ml-crypto.git'
+                    title: 'OverPwnZ (YouTube) – Clases Gratuitas de Hacking Ético y Ciberseguridad',
+                    desc: 'Participación y apoyo en el desarrollo de un canal educativo perteneciente al equipo competitivo del grupo de estudio OverPwnZ. El proyecto está orientado a compartir conocimiento y guiar a estudiantes que buscan dar sus primeros pasos en el mundo del hacking ético. Se publican clases gratuitas y contenido práctico tanto de seguridad ofensiva como defensiva, incluyendo temas como Red Team, explotación de vulnerabilidades, CTFs y análisis Blue Team.',
+                    tech: ['YouTube', 'Community Project'],
+                    link: 'https://www.youtube.com/@OverPwnZ'
                   }
                 ].map((project, idx) => (
                   <div key={idx} className="bg-card cyber-card border border-border rounded-2xl p-4 hover:border-accent/50 transition-colors flex gap-4">
@@ -570,9 +574,13 @@ export default function Portfolio() {
                   <Linkedin className="w-4 h-4" />
                   <span>LinkedIn</span>
                 </a>
-                <a href="mailto:iam_alvarez_orellana@hotmail.com" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
-                  <Mail className="w-4 h-4" />
-                  <span>Email</span>
+                <a href="https://app.hackthebox.com/public/users/1924991" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Hack The Box</span>
+                </a>
+                <a href="https://tryhackme.com/p/Maizeravla" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
+                  <ExternalLink className="w-4 h-4" />
+                  <span>TryHackMe</span>
                 </a>
               </div>
             </div>
