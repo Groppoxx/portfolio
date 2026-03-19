@@ -291,6 +291,27 @@ export default function Portfolio() {
                   </div>
                   <span className="text-xs cyber-accent-alt">2025</span>
                 </div>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex gap-3">
+                    <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
+                      <Image src="/crta.png" alt="crta" width={32} height={32} className="h-full w-full object-contain" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-sm mb-1 cyber-accent">
+                        <a
+                          href="https://labs.cyberwarfare.live/credential/achievement/69a8d48a22199ce9033141b9"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-accent/70 transition-colors"
+                        >
+                          CRTA
+                        </a>
+                      </h4>
+                      <p className="text-xs text-muted-foreground">Certified Red Team Analyst • CyberWarfare Labs (CWL)</p>
+                    </div>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2025</span>
+                </div>
               </div>
             </div>
           </div>
@@ -436,6 +457,20 @@ export default function Portfolio() {
                 <span className="text-foreground">CTF Participation</span>
               </h3>
               <div className="space-y-3">
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="font-semibold">Copa América de Ciberseguridad - Organization of American States (OAS)</p>
+                    <p className="text-xs text-muted-foreground">Team • 14th place</p>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2026</span>
+                </div>
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="font-semibold">VulnCorp CTF - INE Security</p>
+                    <p className="text-xs text-muted-foreground">Individual • 21st place</p>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2026</span>
+                </div>
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
                     <p className="font-semibold">CTF de Fluid Attacks - Reto LATAM</p>
