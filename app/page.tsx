@@ -609,9 +609,13 @@ export default function Portfolio() {
                   <Linkedin className="w-4 h-4" />
                   <span>LinkedIn</span>
                 </a>
+                <a href="https://blogiamalvarez.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Blog</span>
+                </a>
                 <a href="https://app.hackthebox.com/public/users/1924991" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
                   <ExternalLink className="w-4 h-4" />
-                  <span>Hack The Box</span>
+                  <span>HackTheBox</span>
                 </a>
                 <a href="https://tryhackme.com/p/Maizeravla" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
                   <ExternalLink className="w-4 h-4" />
