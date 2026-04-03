@@ -459,6 +459,13 @@ export default function Portfolio() {
               <div className="space-y-3">
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
+                    <p className="font-semibold">Hack4u CTF</p>
+                    <p className="text-xs text-muted-foreground">Individual • 13th place</p>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2026</span>
+                </div>
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <div>
                     <p className="font-semibold">Copa América de Ciberseguridad - Organization of American States (OAS)</p>
                     <p className="text-xs text-muted-foreground">Team • 14th place</p>
                   </div>
@@ -500,7 +507,7 @@ export default function Portfolio() {
                   <div className="order-2 group-open:order-1 mt-3 space-y-3 transition-all duration-300 ease-out">
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
-                    <p className="font-semibold">PERÚHACK</p>
+                    <p className="font-semibold">PERÚHACK CTF</p>
                     <p className="text-xs text-muted-foreground">Individual • 1st place</p>
                   </div>
                   <span className="text-xs cyber-accent-alt">2025</span>
