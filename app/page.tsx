@@ -171,14 +171,14 @@ export default function Portfolio() {
               <div className="bg-card cyber-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-colors">
                 <div className="flex justify-between items-start mb-3">
                   <div>
-                    <h3 className="text-sm font-bold text-accent cyber-title">Tutor HXPLOIT</h3>
+                    <h3 className="text-sm font-bold text-accent cyber-title">Tutor</h3>
                     <p className="text-xs text-muted-foreground">Universidad Peruana de Ciencias Aplicadas</p>
                   </div>
-                  <span className="text-xs text-secondary cyber-accent-alt">03/2025 - Actualidad</span>
+                  <span className="text-xs text-secondary cyber-accent-alt">04/2026 - Actualidad</span>
                 </div>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• Lidero tutorías en ciberseguridad con énfasis en pentesting y seguridad ofensiva.</li>
-                  <li>• Planifico y ejecuté actividades prácticas en entornos reales de laboratorio (Hack The Box).</li>
+                  <li>• Planifico y ejecuto actividades prácticas en entornos reales de laboratorio (Hack The Box).</li>
                   <li>• Fomento el aprendizaje colaborativo y el desarrollo de habilidades técnicas en los participantes.</li>
                 </ul>
               </div>
