@@ -310,7 +310,7 @@ export default function Portfolio() {
                       <p className="text-xs text-muted-foreground">Certified Red Team Analyst • CyberWarfare Labs (CWL)</p>
                     </div>
                   </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
+                  <span className="text-xs cyber-accent-alt">2026</span>
                 </div>
               </div>
             </div>
