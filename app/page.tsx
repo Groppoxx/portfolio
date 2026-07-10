@@ -4,23 +4,134 @@ import React, { useRef } from 'react';
 import { Github, Linkedin, MapPin, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
+type Job = {
+  role: string
+  org: string
+  period: string
+  bullets: string[]
+}
+
+const EXPERIENCE: Job[] = [
+  {
+    role: 'Tutor',
+    org: 'Universidad Peruana de Ciencias Aplicadas',
+    period: '04/2026 - Actualidad',
+    bullets: [
+      'Lidero tutorías en ciberseguridad con énfasis en pentesting y seguridad ofensiva.',
+      'Planifico y ejecuto actividades prácticas en entornos reales de laboratorio (Hack The Box).',
+      'Fomento el aprendizaje colaborativo y el desarrollo de habilidades técnicas en los participantes.',
+    ],
+  },
+  {
+    role: 'Desarrollador Trainee',
+    org: 'Consorcio Cueva',
+    period: '07/2025 - 10/2025',
+    bullets: [
+      'PoC para MINED World con Bitdefender GravityZone Business Security Enterprise (XDR), evaluando detección y gestión.',
+      'Diseñé encuestas de Cultura Organizacional en Seguridad de la Información alineada a ISO/IEC 27001.',
+      'Soporte interno e implementación de código en módulos específicos del backend.',
+    ],
+  },
+]
+const EXPERIENCE_VISIBLE = 2
+
+type Project = {
+  title: string
+  desc: string
+  tech: string | string[]
+  link: string
+}
+
+const PROJECTS: Project[] = [
+  {
+    title: 'PoC de Vulnerabilidad en Mailcow (CVE-2025-25198)',
+    desc: 'Desarrollo de una prueba de concepto para validar una vulnerabilidad de Host Header Poisoning en Mailcow, explotando el flujo de restablecimiento de contraseña mediante la manipulación del encabezado Host. Implementé manejo de sesión y tokens CSRF, soporte HTTPS/HTTP2 y automatización del proceso de verificación en entornos de prueba controlados.',
+    tech: 'Python',
+    link: 'https://github.com/Groppoxx/CVE-2025-25198-PoC.git',
+  },
+  {
+    title: 'Gestor de Perfiles OpenVPN (VPN-Manager)',
+    desc: 'Desarrollo de una herramienta CLI en Python para organizar y gestionar perfiles OpenVPN en entornos Linux, orientada a plataformas de laboratorio como Hack The Box y TryHackMe. Implementé importación y organización automática de perfiles, deduplicación basada en hash, sanitización de configuraciones y un flujo interactivo de conexión, desconexión y monitoreo de estado mediante OpenVPN en modo daemon.',
+    tech: 'Python',
+    link: 'https://github.com/Groppoxx/VPN-Manager.git',
+  },
+  {
+    title: 'OverPwnZ (YouTube) – Clases Gratuitas de Hacking Ético y Ciberseguridad',
+    desc: 'Participación y apoyo en el desarrollo de un canal educativo perteneciente al equipo competitivo del grupo de estudio OverPwnZ. El proyecto está orientado a compartir conocimiento y guiar a estudiantes que buscan dar sus primeros pasos en el mundo del hacking ético. Se publican clases gratuitas y contenido práctico tanto de seguridad ofensiva como defensiva, incluyendo temas como Red Team, explotación de vulnerabilidades, CTFs y análisis Blue Team.',
+    tech: ['YouTube', 'Community Project'],
+    link: 'https://www.youtube.com/@OverPwnZ',
+  },
+]
+const PROJECTS_VISIBLE = 3
+
 export default function Portfolio() {
   const ctfScrollYRef = useRef<number | null>(null);
+  const experienceScrollYRef = useRef<number | null>(null);
+  const projectsScrollYRef = useRef<number | null>(null);
 
-  const handleCtfToggle = (event: React.SyntheticEvent<HTMLDetailsElement>) => {
-    const target = event.currentTarget
-    if (target.open) {
-      ctfScrollYRef.current = window.scrollY
-      requestAnimationFrame(() => {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      })
-      return
+  const makeDetailsToggleHandler = (scrollRef: React.MutableRefObject<number | null>) =>
+    (event: React.SyntheticEvent<HTMLDetailsElement>) => {
+      const target = event.currentTarget
+      if (target.open) {
+        scrollRef.current = window.scrollY
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        })
+        return
+      }
+
+      if (scrollRef.current !== null) {
+        window.scrollTo({ top: scrollRef.current, behavior: 'smooth' })
+      }
     }
 
-    if (ctfScrollYRef.current !== null) {
-      window.scrollTo({ top: ctfScrollYRef.current, behavior: 'smooth' })
-    }
-  }
+  const handleCtfToggle = makeDetailsToggleHandler(ctfScrollYRef)
+  const handleExperienceToggle = makeDetailsToggleHandler(experienceScrollYRef)
+  const handleProjectsToggle = makeDetailsToggleHandler(projectsScrollYRef)
+
+  const renderJob = (job: Job, idx: number) => (
+    <div key={idx} className="bg-card cyber-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-colors">
+      <div className="flex justify-between items-start mb-3">
+        <div>
+          <h3 className="text-sm font-bold text-accent cyber-title">{job.role}</h3>
+          <p className="text-xs text-muted-foreground">{job.org}</p>
+        </div>
+        <span className="text-xs text-secondary cyber-accent-alt">{job.period}</span>
+      </div>
+      <ul className="text-xs text-muted-foreground space-y-1">
+        {job.bullets.map((bullet) => (
+          <li key={bullet}>• {bullet}</li>
+        ))}
+      </ul>
+    </div>
+  )
+
+  const renderProject = (project: Project, idx: number) => (
+    <div key={idx} className="bg-card cyber-card border border-border rounded-2xl p-4 hover:border-accent/50 transition-colors flex gap-4">
+      <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center cyber-kicker">
+        <span className="text-xs font-bold">PRJ</span>
+      </div>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-semibold text-sm mb-1 cyber-title">{project.title}</h3>
+        <p className="text-xs text-muted-foreground mb-2">{project.desc}</p>
+        <div className="flex flex-wrap gap-2">
+          {(Array.isArray(project.tech) ? project.tech : [project.tech]).map((tech) => (
+            <span key={`${project.title}-${tech}`} className="text-xs px-2 py-1 rounded cyber-chip">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-shrink-0 text-accent hover:text-accent/70 transition-colors"
+      >
+        <ExternalLink className="w-4 h-4" />
+      </a>
+    </div>
+  )
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -35,7 +146,7 @@ export default function Portfolio() {
                   <div className="w-24 h-30 md:w-28 md:h-30 rounded-2xl overflow-hidden border border-border">
                     <Image
                       src="/profile.jpg"
-                      alt="Security Expert"
+                      alt="Iam Alvarez Orellana"
                       width={120}
                       height={120}
                       className="w-full h-full object-cover"
@@ -77,47 +188,30 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Experience + Education Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            {/* Experience Cards */}
-            <div className="space-y-4">
-              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
-                <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Experiencia Profesional</span>
-              </h2>
-              {/* Job 1 */}
-              <div className="bg-card cyber-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-colors">
-                <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <h3 className="text-sm font-bold text-accent cyber-title">Tutor</h3>
-                    <p className="text-xs text-muted-foreground">Universidad Peruana de Ciencias Aplicadas</p>
-                  </div>
-                  <span className="text-xs text-secondary cyber-accent-alt">04/2026 - Actualidad</span>
-                </div>
-                <ul className="text-xs text-muted-foreground space-y-1">
-                  <li>• Lidero tutorías en ciberseguridad con énfasis en pentesting y seguridad ofensiva.</li>
-                  <li>• Planifico y ejecuto actividades prácticas en entornos reales de laboratorio (Hack The Box).</li>
-                  <li>• Fomento el aprendizaje colaborativo y el desarrollo de habilidades técnicas en los participantes.</li>
-                </ul>
-              </div>
-
-              {/* Job 2 */}
-              <div className="bg-card cyber-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-colors">
-                <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <h3 className="text-sm font-bold text-accent cyber-title">Desarrollador Trainee</h3>
-                    <p className="text-xs text-muted-foreground">Consorcio Cueva</p>
-                  </div>
-                  <span className="text-xs text-secondary cyber-accent-alt">07/2025 - 10/2025</span>
-                </div>
-                <ul className="text-xs text-muted-foreground space-y-1">
-                  <li>• PoC para MINED World con Bitdefender GravityZone Business Security Enterprise (XDR), evaluando detección y gestión.</li>
-                  <li>• Diseñé encuestas de Cultura Organizacional en Seguridad de la Información alineada a ISO/IEC 27001.</li>
-                  <li>• Soporte interno e implementación de código en módulos específicos del backend.</li>
-                </ul>
-              </div>
+          {/* Experience - full width, scales independently */}
+          <div className="mb-4">
+            <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <span className="cyber-accent">{'>>'}</span>{' '}
+              <span className="text-foreground">Experiencia Profesional</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {EXPERIENCE.slice(0, EXPERIENCE_VISIBLE).map(renderJob)}
             </div>
+            {EXPERIENCE.length > EXPERIENCE_VISIBLE && (
+              <details className="group mt-4" onToggle={handleExperienceToggle}>
+                <summary className="cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
+                  <span className="group-open:hidden">Ver más</span>
+                  <span className="hidden group-open:inline">Ver menos</span>
+                </summary>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  {EXPERIENCE.slice(EXPERIENCE_VISIBLE).map(renderJob)}
+                </div>
+              </details>
+            )}
+          </div>
 
+          {/* Education + Details Grid - both fixed-size, safe to pair */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {/* Education Card */}
             <div className="bg-card cyber-card border border-border rounded-2xl p-6">
               <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
@@ -232,6 +326,48 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
+
+            {/* Contact Details */}
+            <div className="bg-card cyber-card border border-border rounded-2xl p-6">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wide cyber-title">
+                <span className="cyber-accent">{'>>'}</span>{' '}
+                <span className="text-foreground">Detalles</span>
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Idiomas</p>
+                  <p className="font-semibold">Español (Nativo), Inglés (Avanzado), Portugués (Básico)</p>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Email</p>
+                  <a href="mailto:iam_alvarez_orellana@hotmail.com" className="font-semibold text-accent hover:text-accent/70 transition-colors text-sm">
+                    iam_alvarez_orellana@hotmail.com
+                  </a>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Rol Objetivo</p>
+                  <p className="font-semibold">Practicante / Junior</p>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Labs Resueltos</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs px-2 py-1 rounded cyber-chip">Hack The Box: 70</span>
+                    <span className="text-xs px-2 py-1 rounded cyber-chip">TryHackMe: 109</span>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-1">Ubicación</p>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-accent" />
+                    <p className="font-semibold">Lima, Perú</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2">Disponibilidad</p>
+                  <p className="font-semibold text-accent text-sm">Disponible para trabajar</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Languages & Frameworks + Tools Grid */}
@@ -267,104 +403,26 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Projects + Details Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Projects */}
-            <div>
-              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
-                <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Proyectos</span>
-              </h2>
-              <div className="space-y-3">
-                {[
-                  {
-                    title: 'PoC de Vulnerabilidad en Mailcow (CVE-2025-25198)',
-                    desc: 'Desarrollo de una prueba de concepto para validar una vulnerabilidad de Host Header Poisoning en Mailcow, explotando el flujo de restablecimiento de contraseña mediante la manipulación del encabezado Host. Implementé manejo de sesión y tokens CSRF, soporte HTTPS/HTTP2 y automatización del proceso de verificación en entornos de prueba controlados.',
-                    tech: 'Python',
-                    link: 'https://github.com/Groppoxx/CVE-2025-25198-PoC.git'
-                  },
-                  {
-                    title: 'Gestor de Perfiles OpenVPN (VPN-Manager)',
-                    desc: 'Desarrollo de una herramienta CLI en Python para organizar y gestionar perfiles OpenVPN en entornos Linux, orientada a plataformas de laboratorio como Hack The Box y TryHackMe. Implementé importación y organización automática de perfiles, deduplicación basada en hash, sanitización de configuraciones y un flujo interactivo de conexión, desconexión y monitoreo de estado mediante OpenVPN en modo daemon.',
-                    tech: 'Python',
-                    link: 'https://github.com/Groppoxx/VPN-Manager.git'
-                  },
-                  {
-                    title: 'OverPwnZ (YouTube) – Clases Gratuitas de Hacking Ético y Ciberseguridad',
-                    desc: 'Participación y apoyo en el desarrollo de un canal educativo perteneciente al equipo competitivo del grupo de estudio OverPwnZ. El proyecto está orientado a compartir conocimiento y guiar a estudiantes que buscan dar sus primeros pasos en el mundo del hacking ético. Se publican clases gratuitas y contenido práctico tanto de seguridad ofensiva como defensiva, incluyendo temas como Red Team, explotación de vulnerabilidades, CTFs y análisis Blue Team.',
-                    tech: ['YouTube', 'Community Project'],
-                    link: 'https://www.youtube.com/@OverPwnZ'
-                  }
-                ].map((project, idx) => (
-                  <div key={idx} className="bg-card cyber-card border border-border rounded-2xl p-4 hover:border-accent/50 transition-colors flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center cyber-kicker">
-                      <span className="text-xs font-bold">PRJ</span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-sm mb-1 cyber-title">{project.title}</h3>
-                      <p className="text-xs text-muted-foreground mb-2">{project.desc}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {(Array.isArray(project.tech) ? project.tech : [project.tech]).map((tech) => (
-                          <span key={`${project.title}-${tech}`} className="text-xs px-2 py-1 rounded cyber-chip">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-shrink-0 text-accent hover:text-accent/70 transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </div>
-                ))}
-              </div>
+          {/* Projects - full width, scales independently */}
+          <div className="mb-4">
+            <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <span className="cyber-accent">{'>>'}</span>{' '}
+              <span className="text-foreground">Proyectos</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {PROJECTS.slice(0, PROJECTS_VISIBLE).map(renderProject)}
             </div>
-
-            {/* Contact Details */}
-            <div className="bg-card cyber-card border border-border rounded-2xl p-6">
-              <h2 className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wide cyber-title">
-                <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Detalles</span>
-              </h2>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Languages</p>
-                  <p className="font-semibold">Español (Nativo), Inglés (Avanzado), Portugués (Básico)</p>
+            {PROJECTS.length > PROJECTS_VISIBLE && (
+              <details className="group mt-4" onToggle={handleProjectsToggle}>
+                <summary className="cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
+                  <span className="group-open:hidden">Ver más</span>
+                  <span className="hidden group-open:inline">Ver menos</span>
+                </summary>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                  {PROJECTS.slice(PROJECTS_VISIBLE).map(renderProject)}
                 </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Email</p>
-                  <a href="mailto:iam_alvarez_orellana@hotmail.com" className="font-semibold text-accent hover:text-accent/70 transition-colors text-sm">
-                    iam_alvarez_orellana@hotmail.com
-                  </a>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Target Role</p>
-                  <p className="font-semibold">Practicante / Junior</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Labs Solved</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs px-2 py-1 rounded cyber-chip">Hack The Box: 70</span>
-                    <span className="text-xs px-2 py-1 rounded cyber-chip">TryHackMe: 109</span>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Location</p>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-accent" />
-                    <p className="font-semibold">Lima, Peru</p>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-2">Availability</p>
-                  <p className="font-semibold text-accent text-sm">Open to work</p>
-                </div>
-              </div>
-            </div>
+              </details>
+            )}
           </div>
 
           {/* CTF Participation */}
@@ -530,7 +588,7 @@ export default function Portfolio() {
             <div>
               <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4 cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Portfolio</span>
+                <span className="text-foreground">Portafolio</span>
               </h4>
               <div className="flex gap-6">
                 <a href="https://github.com/Groppoxx" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
