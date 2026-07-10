@@ -217,6 +217,15 @@ export default function Portfolio() {
                       <Linkedin className="w-3.5 h-3.5" />
                       LinkedIn
                     </a>
+                    <a
+                      href="https://github.com/Groppoxx"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
+                    >
+                      <Github className="w-3.5 h-3.5" />
+                      GitHub
+                    </a>
                   </div>
                 </div>
               </div>
@@ -255,12 +264,12 @@ export default function Portfolio() {
               {EXPERIENCE.slice(0, EXPERIENCE_VISIBLE).map(renderJob)}
             </div>
             {EXPERIENCE.length > EXPERIENCE_VISIBLE && (
-              <details className="group mt-4" onToggle={handleExperienceToggle}>
-                <summary className="cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
+              <details className="group flex flex-col gap-4 mt-4" onToggle={handleExperienceToggle}>
+                <summary className="order-1 group-open:order-2 cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
                   <span className="group-open:hidden">Ver más</span>
                   <span className="hidden group-open:inline">Ver menos</span>
                 </summary>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div className="order-2 group-open:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                   {EXPERIENCE.slice(EXPERIENCE_VISIBLE).map(renderJob)}
                 </div>
               </details>
@@ -470,12 +479,12 @@ export default function Portfolio() {
               {PROJECTS.slice(0, PROJECTS_VISIBLE).map(renderProject)}
             </div>
             {PROJECTS.length > PROJECTS_VISIBLE && (
-              <details className="group mt-4" onToggle={handleProjectsToggle}>
-                <summary className="cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
+              <details className="group flex flex-col gap-4 mt-4" onToggle={handleProjectsToggle}>
+                <summary className="order-1 group-open:order-2 cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
                   <span className="group-open:hidden">Ver más</span>
                   <span className="hidden group-open:inline">Ver menos</span>
                 </summary>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div className="order-2 group-open:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
                   {PROJECTS.slice(PROJECTS_VISIBLE).map(renderProject)}
                 </div>
               </details>
@@ -492,12 +501,12 @@ export default function Portfolio() {
               <div className="space-y-3">
                 {CTF_ENTRIES.slice(0, CTF_VISIBLE).map(renderCtf)}
                 {CTF_ENTRIES.length > CTF_VISIBLE && (
-                  <details className="group" onToggle={handleCtfToggle}>
-                    <summary className="cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
+                  <details className="group flex flex-col gap-3" onToggle={handleCtfToggle}>
+                    <summary className="order-1 group-open:order-2 cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
                       <span className="group-open:hidden">Ver más</span>
                       <span className="hidden group-open:inline">Ver menos</span>
                     </summary>
-                    <div className="mt-3 space-y-3">
+                    <div className="order-2 group-open:order-1 space-y-3">
                       {CTF_ENTRIES.slice(CTF_VISIBLE).map(renderCtf)}
                     </div>
                   </details>
@@ -519,14 +528,6 @@ export default function Portfolio() {
                 <span className="text-foreground">Portafolio</span>
               </h4>
               <div className="flex gap-6">
-                <a href="https://github.com/Groppoxx" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
-                  <Github className="w-4 h-4" />
-                  <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/iam-anthony-marcelo-alvarez-orellana/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
-                  <Linkedin className="w-4 h-4" />
-                  <span>LinkedIn</span>
-                </a>
                 <a href="https://blogiamalvarez.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
                   <ExternalLink className="w-4 h-4" />
                   <span>Blog</span>
