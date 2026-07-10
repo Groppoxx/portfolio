@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { Github, Linkedin, MapPin, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
 type Job = {
@@ -64,6 +64,35 @@ const PROJECTS: Project[] = [
 ]
 const PROJECTS_VISIBLE = 3
 
+type CtfEntry = {
+  name: string
+  subtitle: string
+  year: string
+}
+
+const CTF_ENTRIES: CtfEntry[] = [
+  { name: 'Season VI US Cyber Open Competitive CTF - US Cyber Games', subtitle: 'Individual • 1st place', year: '2026' },
+  { name: 'Hack4u CTF', subtitle: 'Individual • 13th place', year: '2026' },
+  { name: 'Copa América de Ciberseguridad - Organization of American States (OAS)', subtitle: 'Team • 14th place', year: '2026' },
+  { name: 'VulnCorp CTF - INE Security', subtitle: 'Individual • 21st place', year: '2026' },
+  { name: 'CTF de Fluid Attacks - Reto LATAM', subtitle: 'Individual • 20th place', year: '2026' },
+  { name: 'University CTF: Tinsel Trouble', subtitle: 'Team • 18th place', year: '2025' },
+  { name: 'The Last Hack The World - API Query Security Challenge', subtitle: 'Individual • 3rd place', year: '2025' },
+  { name: 'PERÚHACK CTF', subtitle: 'Individual • 1st place', year: '2025' },
+  { name: 'Black Alpaca CTF', subtitle: 'Team • 5th place', year: '2025' },
+  { name: 'CCCTF', subtitle: 'Team • 6th place', year: '2025' },
+  { name: 'CTF CAUC', subtitle: 'Individual • 1st place', year: '2025' },
+  { name: 'RootWars', subtitle: 'Individual • 9th place', year: '2025' },
+  { name: 'Hack The Boo: The Hollowing of Caer Wyrrd', subtitle: 'Individual • 8th place', year: '2025' },
+  { name: 'Kaspersky {ctf}', subtitle: 'Team • 9th place • América', year: '2025' },
+  { name: 'TheWeekendHack CTF', subtitle: 'Team • 1st place', year: '2025' },
+  { name: 'CiberSec UNASAM CTF', subtitle: 'Individual • 1st place', year: '2025' },
+  { name: 'World Wide CTF', subtitle: 'Team • 19th place', year: '2025' },
+  { name: 'Cyber Apocalypse CTF: Tales from Eldorian', subtitle: 'Team • 51st place • MVP', year: '2025' },
+  { name: 'Duelo de Sedes UPC', subtitle: 'Team • 1st place', year: '2024' },
+]
+const CTF_VISIBLE = 7
+
 export default function Portfolio() {
   const ctfScrollYRef = useRef<number | null>(null);
   const experienceScrollYRef = useRef<number | null>(null);
@@ -103,6 +132,16 @@ export default function Portfolio() {
           <li key={bullet}>• {bullet}</li>
         ))}
       </ul>
+    </div>
+  )
+
+  const renderCtf = (entry: CtfEntry, idx: number) => (
+    <div key={idx} className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p className="font-semibold">{entry.name}</p>
+        <p className="text-xs text-muted-foreground">{entry.subtitle}</p>
+      </div>
+      <span className="text-xs cyber-accent-alt">{entry.year}</span>
     </div>
   )
 
@@ -158,9 +197,27 @@ export default function Portfolio() {
                     Iam Alvarez Orellana
                   </h1>
                   <p className="text-muted-foreground text-sm mb-3">Instructor de Ciberseguridad Ofensiva - HxPloit UPC</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                     Estudiante de 9° ciclo de Ciencias de la Computación en la Universidad Peruana de Ciencias Aplicadas (UPC), perteneciente al décimo superior, con un enfoque sólido en Ciberseguridad ofensiva. Me mantengo activo en Hack The Box, donde he resuelto más de 70 máquinas, y en competencias de Capture The Flag (CTF) tanto individuales como en equipo, enfrentando escenarios reales de explotación, análisis de vulnerabilidades y pentesting, fortaleciendo mi pensamiento crítico, disciplina técnica y la resolución de problemas en entornos adversos.
                   </p>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href="mailto:iam_alvarez_orellana@hotmail.com"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
+                    >
+                      <Mail className="w-3.5 h-3.5" />
+                      Contáctame
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/iam-anthony-marcelo-alvarez-orellana/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border border-accent/40 text-accent hover:bg-accent/10 transition-colors"
+                    >
+                      <Linkedin className="w-3.5 h-3.5" />
+                      LinkedIn
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -433,147 +490,18 @@ export default function Portfolio() {
                 <span className="text-foreground">Participación en CTF</span>
               </h2>
               <div className="space-y-3">
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Season VI US Cyber Open Competitive CTF - US Cyber Games</p>
-                    <p className="text-xs text-muted-foreground">Individual • 1st place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2026</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Hack4u CTF</p>
-                    <p className="text-xs text-muted-foreground">Individual • 13th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2026</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Copa América de Ciberseguridad - Organization of American States (OAS)</p>
-                    <p className="text-xs text-muted-foreground">Team • 14th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2026</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">VulnCorp CTF - INE Security</p>
-                    <p className="text-xs text-muted-foreground">Individual • 21st place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2026</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">CTF de Fluid Attacks - Reto LATAM</p>
-                    <p className="text-xs text-muted-foreground">Individual • 20th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2026</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">University CTF: Tinsel Trouble</p>
-                    <p className="text-xs text-muted-foreground">Team • 18th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">The Last Hack The World - API Query Security Challenge</p>
-                    <p className="text-xs text-muted-foreground">Individual • 3rd place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <details className="group flex flex-col" onToggle={handleCtfToggle}>
-                  <summary className="order-1 group-open:order-2 cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors transition-all duration-300 ease-out">
-                    <span className="group-open:hidden">Show more</span>
-                    <span className="hidden group-open:inline">Show less</span>
-                  </summary>
-                  <div className="order-2 group-open:order-1 mt-3 space-y-3 transition-all duration-300 ease-out">
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">PERÚHACK CTF</p>
-                    <p className="text-xs text-muted-foreground">Individual • 1st place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Black Alpaca CTF</p>
-                    <p className="text-xs text-muted-foreground">Team • 5th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">CCCTF</p>
-                    <p className="text-xs text-muted-foreground">Team • 6th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">CTF CAUC</p>
-                    <p className="text-xs text-muted-foreground">Individual • 1st place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">RootWars</p>
-                    <p className="text-xs text-muted-foreground">Individual • 9th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Hack The Boo: The Hollowing of Caer Wyrrd</p>
-                    <p className="text-xs text-muted-foreground">Individual • 8th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Kaspersky {"{ctf}"}</p>
-                    <p className="text-xs text-muted-foreground">Team • 9th place • América</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">TheWeekendHack CTF</p>
-                    <p className="text-xs text-muted-foreground">Team • 1st place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">CiberSec UNASAM CTF</p>
-                    <p className="text-xs text-muted-foreground">Individual • 1st place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">World Wide CTF</p>
-                    <p className="text-xs text-muted-foreground">Team • 19th place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Cyber Apocalypse CTF: Tales from Eldorian</p>
-                    <p className="text-xs text-muted-foreground">Team • 51st place • MVP</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <p className="font-semibold">Duelo de Sedes UPC</p>
-                    <p className="text-xs text-muted-foreground">Team • 1st place</p>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2024</span>
-                </div>
-                  </div>
-                </details>
+                {CTF_ENTRIES.slice(0, CTF_VISIBLE).map(renderCtf)}
+                {CTF_ENTRIES.length > CTF_VISIBLE && (
+                  <details className="group" onToggle={handleCtfToggle}>
+                    <summary className="cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
+                      <span className="group-open:hidden">Ver más</span>
+                      <span className="hidden group-open:inline">Ver menos</span>
+                    </summary>
+                    <div className="mt-3 space-y-3">
+                      {CTF_ENTRIES.slice(CTF_VISIBLE).map(renderCtf)}
+                    </div>
+                  </details>
+                )}
               </div>
             </div>
           </div>
