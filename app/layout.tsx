@@ -1,25 +1,20 @@
 import React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Iam Alvarez Portfolio",
   description:
-    "Personal portfolio showcasing cybersecurity expertise, certifications, and achievements",
-  generator: "v0.app",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+    "Portfolio personal de Iam Alvarez Orellana, especialista en ciberseguridad ofensiva: certificaciones, proyectos y participaciones en CTF",
   icons: {
-    icon: [
-      {
-        url: "/icon-dark-32x32.png",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/icon.svg",
   },
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({
@@ -28,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="dark">
       <body className="antialiased bg-background text-foreground">
         {children}
       </body>

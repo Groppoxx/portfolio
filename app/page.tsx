@@ -1,15 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { Mail, Github, Linkedin, MapPin, ExternalLink } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Github, Linkedin, MapPin, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Portfolio() {
   const ctfScrollYRef = useRef<number | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const audioVolume = 0.1;
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isActivated, setIsActivated] = useState(false);
 
   const handleCtfToggle = (event: React.SyntheticEvent<HTMLDetailsElement>) => {
     const target = event.currentTarget
@@ -26,86 +22,8 @@ export default function Portfolio() {
     }
   }
 
-  useEffect(() => {
-    const handleFirstInteraction = () => {
-      const audio = audioRef.current
-      if (!audio) {
-        return
-      }
-
-      audio.muted = false
-      audio.volume = audioVolume
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true)
-          setIsActivated(true)
-        })
-        .catch(() => {
-          // Autoplay can still be blocked; user can use the toggle button.
-        })
-    }
-
-    const options: AddEventListenerOptions = { once: true }
-    document.addEventListener('click', handleFirstInteraction, options)
-    document.addEventListener('keydown', handleFirstInteraction, options)
-
-    const audio = audioRef.current
-    if (audio) {
-      audio.volume = audioVolume
-    }
-
-    return () => {
-      document.removeEventListener('click', handleFirstInteraction)
-      document.removeEventListener('keydown', handleFirstInteraction)
-    }
-  }, [])
-
-  const toggleAudio = () => {
-    const audio = audioRef.current
-    if (!audio) {
-      return
-    }
-
-    if (audio.paused) {
-      audio.muted = false
-      audio.volume = audioVolume
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true)
-          setIsActivated(true)
-        })
-        .catch(() => {
-          setIsPlaying(false)
-        })
-      return
-    }
-
-    audio.pause()
-    setIsPlaying(false)
-  }
-
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <audio
-        ref={audioRef}
-        src="/LoFI_TECH_HOUSE.webm"
-        autoPlay
-        muted
-        loop
-        preload="auto"
-        onLoadedMetadata={(event) => {
-          event.currentTarget.volume = audioVolume
-        }}
-      />
-      <button
-        type="button"
-        onClick={toggleAudio}
-        className="fixed bottom-4 right-4 z-50 rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold text-foreground shadow-lg backdrop-blur transition-colors hover:border-accent/50"
-      >
-        {isPlaying ? 'Music: On' : isActivated ? 'Music: Off' : 'Enable music'}
-      </button>
       <section className="px-4 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
           {/* Top Bento Grid - Profile + Interests */}
@@ -128,7 +46,7 @@ export default function Portfolio() {
                   <h1 className="text-2xl md:text-3xl font-bold mb-1 cyber-title">
                     Iam Alvarez Orellana
                   </h1>
-                  <p className="text-muted-foreground text-sm mb-3">Instructor de Ciberseguridad Ofensiva - HxPloit UPC </p>
+                  <p className="text-muted-foreground text-sm mb-3">Instructor de Ciberseguridad Ofensiva - HxPloit UPC</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Estudiante de 9° ciclo de Ciencias de la Computación en la Universidad Peruana de Ciencias Aplicadas (UPC), perteneciente al décimo superior, con un enfoque sólido en Ciberseguridad ofensiva. Me mantengo activo en Hack The Box, donde he resuelto más de 70 máquinas, y en competencias de Capture The Flag (CTF) tanto individuales como en equipo, enfrentando escenarios reales de explotación, análisis de vulnerabilidades y pentesting, fortaleciendo mi pensamiento crítico, disciplina técnica y la resolución de problemas en entornos adversos.
                   </p>
@@ -138,10 +56,10 @@ export default function Portfolio() {
 
             {/* Interests Card */}
             <div className="bg-card cyber-card border border-border rounded-2xl p-6">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Interests</span>
-              </h3>
+                <span className="text-foreground">Intereses</span>
+              </h2>
               <div className="space-y-3">
                 {[
                   'Penetration Testing',
@@ -163,10 +81,10 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {/* Experience Cards */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Professional Experience</span>
-              </h3>
+                <span className="text-foreground">Experiencia Profesional</span>
+              </h2>
               {/* Job 1 */}
               <div className="bg-card cyber-card border border-border rounded-2xl p-6 hover:border-accent/50 transition-colors">
                 <div className="flex justify-between items-start mb-3">
@@ -194,7 +112,7 @@ export default function Portfolio() {
                 </div>
                 <ul className="text-xs text-muted-foreground space-y-1">
                   <li>• PoC para MINED World con Bitdefender GravityZone Business Security Enterprise (XDR), evaluando detección y gestión.</li>
-                  <li>• Diseñe encuestas de Cultura Organizacional en Seguridad de la Información alineada a ISO/IEC 27001.</li>
+                  <li>• Diseñé encuestas de Cultura Organizacional en Seguridad de la Información alineada a ISO/IEC 27001.</li>
                   <li>• Soporte interno e implementación de código en módulos específicos del backend.</li>
                 </ul>
               </div>
@@ -202,10 +120,10 @@ export default function Portfolio() {
 
             {/* Education Card */}
             <div className="bg-card cyber-card border border-border rounded-2xl p-6">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Education & Certifications</span>
-              </h3>
+                <span className="text-foreground">Educación y Certificaciones</span>
+              </h2>
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex gap-3">
@@ -213,7 +131,7 @@ export default function Portfolio() {
                       <Image src="/upc.png" alt="UPC" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm mb-1 cyber-accent">
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
                         <a
                           href="https://www.linkedin.com/in/iam-anthony-marcelo-alvarez-orellana/"
                           target="_blank"
@@ -222,7 +140,7 @@ export default function Portfolio() {
                         >
                           Ciencias de la Computación
                         </a>
-                      </h4>
+                      </h3>
                       <p className="text-xs text-muted-foreground">Universidad Peruana de Ciencias Aplicadas (UPC)</p>
                     </div>
                   </div>
@@ -234,7 +152,7 @@ export default function Portfolio() {
                       <Image src="/ejptv2.png" alt="ejptv2" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm mb-1 cyber-accent">
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
                         <a
                           href="https://certs.ine.com/c9cfb0f0-f136-46d0-9935-a9df394e6bbb#acc.aLSB86lr"
                           target="_blank"
@@ -243,7 +161,7 @@ export default function Portfolio() {
                         >
                           eJPTv2
                         </a>
-                      </h4>
+                      </h3>
                       <p className="text-xs text-muted-foreground">Junior Penetration Tester • INE Security</p>
                     </div>
                   </div>
@@ -255,7 +173,7 @@ export default function Portfolio() {
                       <Image src="/pt1.png" alt="pt1" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm mb-1 cyber-accent">
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
                         <a
                           href="https://assets.tryhackme.com/certification-certificate/68a0c9cb32d2db60f647af68.pdf"
                           target="_blank"
@@ -264,7 +182,7 @@ export default function Portfolio() {
                         >
                           PT1
                         </a>
-                      </h4>
+                      </h3>
                       <p className="text-xs text-muted-foreground">Junior Penetration Tester • TryHackMe</p>
                     </div>
                   </div>
@@ -276,7 +194,7 @@ export default function Portfolio() {
                       <Image src="/dante.png" alt="dante" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm mb-1 cyber-accent">
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
                         <a
                           href="https://drive.google.com/file/d/1IKts4XQpoqTlL9NzC60BHt8GVX5lGYMd/view?usp=sharing"
                           target="_blank"
@@ -285,7 +203,7 @@ export default function Portfolio() {
                         >
                           Dante
                         </a>
-                      </h4>
+                      </h3>
                       <p className="text-xs text-muted-foreground">Pro Lab: Dante • Hack The Box</p>
                     </div>
                   </div>
@@ -297,7 +215,7 @@ export default function Portfolio() {
                       <Image src="/crta.png" alt="crta" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm mb-1 cyber-accent">
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
                         <a
                           href="https://labs.cyberwarfare.live/credential/achievement/69a8d48a22199ce9033141b9"
                           target="_blank"
@@ -306,7 +224,7 @@ export default function Portfolio() {
                         >
                           CRTA
                         </a>
-                      </h4>
+                      </h3>
                       <p className="text-xs text-muted-foreground">Certified Red Team Analyst • CyberWarfare Labs (CWL)</p>
                     </div>
                   </div>
@@ -320,10 +238,10 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {/* Languages & Frameworks */}
             <div className="bg-card cyber-card border border-border rounded-2xl p-6">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Languages & Frameworks</span>
-              </h3>
+                <span className="text-foreground">Lenguajes y Frameworks</span>
+              </h2>
               <div className="flex flex-wrap gap-3">
                 {['Microsoft Office', 'Python', 'Bash', 'JavaScript', 'C++', 'SQL'].map((lang) => (
                   <span key={lang} className="px-3 py-2 rounded-lg text-xs font-semibold cyber-chip">
@@ -335,10 +253,10 @@ export default function Portfolio() {
 
             {/* Tools & Platforms */}
             <div className="bg-card cyber-card border border-border rounded-2xl p-6">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Tools & Platforms</span>
-              </h3>
+                <span className="text-foreground">Herramientas y Plataformas</span>
+              </h2>
               <div className="flex flex-wrap gap-3">
                 {['Burp Suite', 'Metasploit', 'Kali Linux', 'Wireshark', 'Nmap', 'Docker'].map((tool) => (
                   <span key={tool} className="px-3 py-2 rounded-lg text-xs font-semibold cyber-chip">
@@ -353,10 +271,10 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Projects */}
             <div>
-              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Projects</span>
-              </h3>
+                <span className="text-foreground">Proyectos</span>
+              </h2>
               <div className="space-y-3">
                 {[
                   {
@@ -383,7 +301,7 @@ export default function Portfolio() {
                       <span className="text-xs font-bold">PRJ</span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-sm mb-1 cyber-title">{project.title}</h4>
+                      <h3 className="font-semibold text-sm mb-1 cyber-title">{project.title}</h3>
                       <p className="text-xs text-muted-foreground mb-2">{project.desc}</p>
                       <div className="flex flex-wrap gap-2">
                         {(Array.isArray(project.tech) ? project.tech : [project.tech]).map((tech) => (
@@ -408,14 +326,14 @@ export default function Portfolio() {
 
             {/* Contact Details */}
             <div className="bg-card cyber-card border border-border rounded-2xl p-6">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-6 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Details</span>
-              </h3>
+                <span className="text-foreground">Detalles</span>
+              </h2>
               <div className="space-y-4">
                 <div>
                   <p className="text-xs text-muted-foreground mb-1">Languages</p>
-                  <p className="font-semibold">Español (Nativo), Ingles (Avanzado), Portugues (Basico)</p>
+                  <p className="font-semibold">Español (Nativo), Inglés (Avanzado), Portugués (Básico)</p>
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-1">Email</p>
@@ -452,11 +370,18 @@ export default function Portfolio() {
           {/* CTF Participation */}
           <div className="mt-4">
             <div className="bg-card cyber-card border border-border rounded-2xl p-6">
-              <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
+              <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
                 <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">CTF Participation</span>
-              </h3>
+                <span className="text-foreground">Participación en CTF</span>
+              </h2>
               <div className="space-y-3">
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="font-semibold">Season VI US Cyber Open Competitive CTF - US Cyber Games</p>
+                    <p className="text-xs text-muted-foreground">Individual • 1st place</p>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2026</span>
+                </div>
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
                     <p className="font-semibold">Hack4u CTF</p>
@@ -577,7 +502,7 @@ export default function Portfolio() {
                 </div>
                 <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                   <div>
-                    <p className="font-semibold">Cyber Apocalupse CTF: Tales from Eldorian</p>
+                    <p className="font-semibold">Cyber Apocalypse CTF: Tales from Eldorian</p>
                     <p className="text-xs text-muted-foreground">Team • 51st place • MVP</p>
                   </div>
                   <span className="text-xs cyber-accent-alt">2025</span>
@@ -633,8 +558,8 @@ export default function Portfolio() {
 
             {/* Footer Details */}
             <div className="text-right">
-              <p className="text-xs text-muted-foreground mb-2">© 2026 Security Professional</p>
-              <p className="text-xs text-muted-foreground">Crafted with precision and passion for security</p>
+              <p className="text-xs text-muted-foreground mb-2">© 2026 Iam Alvarez Orellana</p>
+              <p className="text-xs text-muted-foreground">Hecho con precisión y pasión por la seguridad</p>
             </div>
           </div>
         </div>
