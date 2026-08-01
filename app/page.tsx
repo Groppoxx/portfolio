@@ -76,6 +76,7 @@ const CTF_ENTRIES: CtfEntry[] = [
   { name: 'Copa América de Ciberseguridad - Organization of American States (OAS)', subtitle: 'Team • 14th place', year: '2026' },
   { name: 'VulnCorp CTF - INE Security', subtitle: 'Individual • 21st place', year: '2026' },
   { name: 'CTF de Fluid Attacks - Reto LATAM', subtitle: 'Individual • 20th place', year: '2026' },
+  { name: 'Cyber Apocalypse CTF: The Salt Crown', subtitle: 'Team • 5th place', year: '2026' },
   { name: 'University CTF: Tinsel Trouble', subtitle: 'Team • 18th place', year: '2025' },
   { name: 'The Last Hack The World - API Query Security Challenge', subtitle: 'Individual • 3rd place', year: '2025' },
   { name: 'PERÚHACK CTF', subtitle: 'Individual • 1st place', year: '2025' },
