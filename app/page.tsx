@@ -92,7 +92,7 @@ const PROJECTS: Project[] = [
     link: 'https://www.youtube.com/@OverPwnZ',
   },
 ]
-const PROJECTS_VISIBLE = 3
+const PROJECTS_VISIBLE = 4
 
 type CtfEntry = {
   name: string
