@@ -596,10 +596,6 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Portfolio Links */}
             <div>
-              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-4 cyber-title">
-                <span className="cyber-accent">{'>>'}</span>{' '}
-                <span className="text-foreground">Portafolio</span>
-              </h4>
               <div className="flex gap-6">
                 <a href="https://blogiamalvarez.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/70 transition-colors flex items-center gap-2 text-sm">
                   <ExternalLink className="w-4 h-4" />
@@ -618,8 +614,7 @@ export default function Portfolio() {
 
             {/* Footer Details */}
             <div className="text-right">
-              <p className="text-xs text-muted-foreground mb-2">© 2026 Iam Alvarez Orellana</p>
-              <p className="text-xs text-muted-foreground">Hecho con precisión y pasión por la seguridad</p>
+              <p className="text-xs text-muted-foreground">© 2026 Iam Alvarez Orellana</p>
             </div>
           </div>
         </div>
