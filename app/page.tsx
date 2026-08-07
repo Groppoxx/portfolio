@@ -340,6 +340,27 @@ export default function Portfolio() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex gap-3">
                     <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
+                      <Image src="/crta.png" alt="crta" width={32} height={32} className="h-full w-full object-contain" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
+                        <a
+                          href="https://labs.cyberwarfare.live/credential/achievement/69a8d48a22199ce9033141b9"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-accent/70 transition-colors"
+                        >
+                          CRTA
+                        </a>
+                      </h3>
+                      <p className="text-xs text-muted-foreground">Certified Red Team Analyst • CyberWarfare Labs (CWL)</p>
+                    </div>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2026</span>
+                </div>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex gap-3">
+                    <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
                       <Image src="/ejptv2.png" alt="ejptv2" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
@@ -399,27 +420,6 @@ export default function Portfolio() {
                     </div>
                   </div>
                   <span className="text-xs cyber-accent-alt">2025</span>
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex gap-3">
-                    <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
-                      <Image src="/crta.png" alt="crta" width={32} height={32} className="h-full w-full object-contain" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
-                        <a
-                          href="https://labs.cyberwarfare.live/credential/achievement/69a8d48a22199ce9033141b9"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-accent/70 transition-colors"
-                        >
-                          CRTA
-                        </a>
-                      </h3>
-                      <p className="text-xs text-muted-foreground">Certified Red Team Analyst • CyberWarfare Labs (CWL)</p>
-                    </div>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2026</span>
                 </div>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex gap-3">
