@@ -45,9 +45,39 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     title: 'PoC de Vulnerabilidad en Mailcow (CVE-2025-25198)',
-    desc: 'Desarrollo de una prueba de concepto para validar una vulnerabilidad de Host Header Poisoning en Mailcow, explotando el flujo de restablecimiento de contraseña mediante la manipulación del encabezado Host. Implementé manejo de sesión y tokens CSRF, soporte HTTPS/HTTP2 y automatización del proceso de verificación en entornos de prueba controlados.',
+    desc: 'Desarrollo de una prueba de concepto en Python, publicada y verificada por Exploit-DB, para validar una vulnerabilidad de Host Header Poisoning en el flujo de restablecimiento de contraseñas de Mailcow, con potencial impacto de toma de cuentas. Implementé gestión automática de sesiones y tokens CSRF, compatibilidad con HTTPS y HTTP/2, captura de enlaces de restablecimiento y automatización del proceso de verificación en entornos controlados.',
     tech: 'Python',
     link: 'https://github.com/Groppoxx/CVE-2025-25198-PoC.git',
+  },
+  {
+    title: 'PoC de Vulnerabilidad en Apache OFBiz (CVE-2024-36104)',
+    desc: 'Desarrollo de una prueba de concepto en Python para CVE-2024-36104, una vulnerabilidad de ejecución remota de comandos sin autenticación que afecta a versiones de Apache OFBiz anteriores a 18.12.14. Implementé validación y normalización del objetivo, construcción automatizada del flujo vulnerable, generación de payloads Groovy, manejo de solicitudes HTTP, análisis de respuestas, extracción de resultados de comandos, opciones configurables de ejecución y capacidades de diagnóstico para la verificación controlada de la vulnerabilidad.',
+    tech: 'Python',
+    link: 'https://github.com/Groppoxx/CVE-2024-36104-PoC',
+  },
+  {
+    title: 'PoC de Vulnerabilidad en Atril/Xreader (CVE-2023-52076)',
+    desc: 'Desarrollo de una prueba de concepto en Python para CVE-2023-52076, una vulnerabilidad de path traversal y escritura arbitraria de archivos que afecta a los visores de documentos Atril y Xreader. Implementé generación y validación automatizada de payloads EPUB especialmente construidos, múltiples modos de prueba controlada, rutas de payload configurables, generación de claves RSA para escenarios de laboratorio, entrega opcional mediante FTP, gestión de archivos de salida y opciones de diagnóstico para reproducir y validar la vulnerabilidad en entornos autorizados.',
+    tech: 'Python',
+    link: 'https://github.com/Groppoxx/CVE-2023-52076-PoC',
+  },
+  {
+    title: 'PoC de Vulnerabilidad en GitLab (CVE-2023-2825)',
+    desc: 'Desarrollo de una prueba de concepto en Python para automatizar la explotación de una vulnerabilidad de lectura arbitraria de archivos en GitLab CE/EE 16.0.0. Implementé autenticación con manejo de tokens CSRF, creación automática de grupos y proyectos públicos anidados, carga de archivos y generación de rutas de path traversal. La herramienta permite leer archivos individuales o múltiples, reutilizar rutas de carga previamente generadas y realizar pruebas controladas mediante una interfaz CLI configurable.',
+    tech: 'Python',
+    link: 'https://github.com/Groppoxx/CVE-2023-2825-PoC',
+  },
+  {
+    title: 'PoC de Vulnerabilidad en Mara CMS (CVE-2020-25042)',
+    desc: 'Desarrollo de una prueba de concepto en Python para validar una vulnerabilidad de carga arbitraria de archivos autenticada en Mara CMS 7.5, con posibilidad de ejecución remota de comandos. Implementé autenticación mediante manejo de sesiones, salts y hashes propios del CMS, automatización de la carga de payloads PHP, ejecución de comandos y reutilización de archivos previamente cargados. La herramienta incluye soporte para payloads personalizados, modo de solo carga, depuración de solicitudes y una interfaz CLI configurable para entornos de prueba controlados.',
+    tech: 'Python',
+    link: 'https://github.com/Groppoxx/CVE-2020-25042-PoC',
+  },
+  {
+    title: 'HTTP Value Flow Mapper (Extensión para Burp Suite)',
+    desc: 'Desarrollo de una extensión en Java para Burp Suite Community y Professional, basada en la Montoya API, que identifica de forma pasiva cómo los valores generados en respuestas HTTP son reutilizados posteriormente en solicitudes. Implementé extracción y correlación automática de tokens, identificadores, cookies, encabezados y parámetros, junto con un sistema determinístico de puntuación de confianza para facilitar el análisis de posibles vulnerabilidades como IDOR, fallos de control de acceso, CSRF y problemas de gestión de sesiones. La herramienta funciona completamente offline, no modifica el tráfico, protege los valores mediante HMAC-SHA-256 e incluye filtros, límites de recursos y exportación de resultados en CSV y JSON.',
+    tech: 'Java',
+    link: 'https://github.com/Groppoxx/http-value-flow-mapper',
   },
   {
     title: 'Gestor de Perfiles OpenVPN (VPN-Manager)',
@@ -391,6 +421,48 @@ export default function Portfolio() {
                   </div>
                   <span className="text-xs cyber-accent-alt">2026</span>
                 </div>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex gap-3">
+                    <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
+                      <Image src="/google.png" alt="Google Cybersecurity" width={32} height={32} className="h-full w-full object-contain" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
+                        <a
+                          href="https://www.coursera.org/account/accomplishments/professional-cert/6FB44ENXAJ6T"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-accent/70 transition-colors"
+                        >
+                          Google Cybersecurity Professional
+                        </a>
+                      </h3>
+                      <p className="text-xs text-muted-foreground">Google • Coursera</p>
+                    </div>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2024</span>
+                </div>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex gap-3">
+                    <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
+                      <Image src="/python.png" alt="Python for Everybody" width={32} height={32} className="h-full w-full object-contain" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
+                        <a
+                          href="https://www.coursera.org/account/accomplishments/specialization/UDRJGPSMQC9T"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-accent/70 transition-colors"
+                        >
+                          Python for Everybody Specialization
+                        </a>
+                      </h3>
+                      <p className="text-xs text-muted-foreground">University of Michigan • Coursera</p>
+                    </div>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2024</span>
+                </div>
               </div>
             </div>
 
@@ -403,7 +475,7 @@ export default function Portfolio() {
               <div className="space-y-4">
                 <div>
                   <p className="text-xs text-muted-foreground mb-1">Idiomas</p>
-                  <p className="font-semibold">Español (Nativo), Inglés (Avanzado), Portugués (Básico)</p>
+                  <p className="font-semibold">Español (Nativo), Inglés (Intermedio), Portugués (Básico)</p>
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground mb-1">Email</p>
