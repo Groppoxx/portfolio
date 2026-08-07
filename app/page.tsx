@@ -543,7 +543,7 @@ export default function Portfolio() {
           </div>
 
           {/* Projects - full width, scales independently */}
-          <div className="mb-4">
+          <div className="mb-8">
             <h2 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide cyber-title">
               <span className="cyber-accent">{'>>'}</span>{' '}
               <span className="text-foreground">Proyectos</span>
@@ -552,12 +552,12 @@ export default function Portfolio() {
               {PROJECTS.slice(0, PROJECTS_VISIBLE).map(renderProject)}
             </div>
             {PROJECTS.length > PROJECTS_VISIBLE && (
-              <details className="group flex flex-col gap-4 mt-4" onToggle={handleProjectsToggle}>
-                <summary className="order-1 group-open:order-2 cursor-pointer text-xs text-accent hover:text-accent/70 transition-colors">
+              <details className="group flex flex-col items-center gap-4 mt-4" onToggle={handleProjectsToggle}>
+                <summary className="order-1 group-open:order-2 cursor-pointer text-xs font-semibold text-accent hover:text-accent/70 transition-colors px-4 py-1.5 rounded-full cyber-chip border border-accent/40 text-center">
                   <span className="group-open:hidden">Ver más</span>
                   <span className="hidden group-open:inline">Ver menos</span>
                 </summary>
-                <div className="order-2 group-open:order-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="order-2 group-open:order-1 grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
                   {PROJECTS.slice(PROJECTS_VISIBLE).map(renderProject)}
                 </div>
               </details>
