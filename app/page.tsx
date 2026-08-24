@@ -343,27 +343,6 @@ export default function Portfolio() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex gap-3">
                     <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
-                      <Image src="/python.png" alt="Python for Everybody" width={32} height={32} className="h-full w-full object-contain" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
-                        <a
-                          href="https://www.coursera.org/account/accomplishments/specialization/UDRJGPSMQC9T"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-accent/70 transition-colors"
-                        >
-                          Python for Everybody Specialization
-                        </a>
-                      </h3>
-                      <p className="text-xs text-muted-foreground">University of Michigan • Coursera</p>
-                    </div>
-                  </div>
-                  <span className="text-xs cyber-accent-alt">2022</span>
-                </div>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex gap-3">
-                    <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
                       <Image src="/google.png" alt="Google Cybersecurity" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
@@ -402,6 +381,27 @@ export default function Portfolio() {
                     </div>
                   </div>
                   <span className="text-xs cyber-accent-alt">2026</span>
+                </div>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex gap-3">
+                    <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
+                      <Image src="/dante.png" alt="dante" width={32} height={32} className="h-full w-full object-contain" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-sm mb-1 cyber-accent">
+                        <a
+                          href="https://drive.google.com/file/d/1IKts4XQpoqTlL9NzC60BHt8GVX5lGYMd/view?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-accent/70 transition-colors"
+                        >
+                          Dante
+                        </a>
+                      </h3>
+                      <p className="text-xs text-muted-foreground">Pro Lab: Dante • Hack The Box</p>
+                    </div>
+                  </div>
+                  <span className="text-xs cyber-accent-alt">2025</span>
                 </div>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex gap-3">
@@ -448,23 +448,23 @@ export default function Portfolio() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex gap-3">
                     <div className="mt-1 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 p-1">
-                      <Image src="/dante.png" alt="dante" width={32} height={32} className="h-full w-full object-contain" />
+                      <Image src="/python.png" alt="Python for Everybody" width={32} height={32} className="h-full w-full object-contain" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-sm mb-1 cyber-accent">
                         <a
-                          href="https://drive.google.com/file/d/1IKts4XQpoqTlL9NzC60BHt8GVX5lGYMd/view?usp=sharing"
+                          href="https://www.coursera.org/account/accomplishments/specialization/UDRJGPSMQC9T"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="hover:text-accent/70 transition-colors"
                         >
-                          Dante
+                          Python for Everybody Specialization
                         </a>
                       </h3>
-                      <p className="text-xs text-muted-foreground">Pro Lab: Dante • Hack The Box</p>
+                      <p className="text-xs text-muted-foreground">University of Michigan • Coursera</p>
                     </div>
                   </div>
-                  <span className="text-xs cyber-accent-alt">2025</span>
+                  <span className="text-xs cyber-accent-alt">2022</span>
                 </div>
               </div>
             </div>
