@@ -102,8 +102,8 @@ type CtfEntry = {
 
 const CTF_ENTRIES: CtfEntry[] = [
   { name: 'CFC Week CTF', subtitle: 'Individual • 4th place', year: '2026' },
-  { name: 'TCM CTF @ Noob Village (DEF CON 34)', subtitle: 'Individual • Top 5', year: '2026' },
-  { name: 'Data Dystopia CTF 2026 - Manhunt (DEF CON)', subtitle: 'Team • 4th place', year: '2026' },
+  { name: 'TCM CTF @ Noob Village (DEF CON 34)', subtitle: 'Individual • 5th place', year: '2026' },
+  { name: 'Data Dystopia CTF 2026 - Manhunt (DEF CON 34)', subtitle: 'Team • 4th place', year: '2026' },
   { name: 'Cyber Apocalypse CTF: The Salt Crown', subtitle: 'Team • 5th place', year: '2026' },
   { name: 'Season VI US Cyber Open Competitive CTF - US Cyber Games', subtitle: 'Individual • 1st place', year: '2026' },
   { name: 'Hack4u CTF', subtitle: 'Individual • 13th place', year: '2026' },
