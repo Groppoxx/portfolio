@@ -493,7 +493,7 @@ export default function Portfolio() {
                 <div>
                   <p className="text-xs text-muted-foreground mb-1">Labs Resueltos</p>
                   <div className="flex flex-wrap gap-2">
-                    <span className="text-xs px-2 py-1 rounded cyber-chip">Hack The Box: 70</span>
+                    <span className="text-xs px-2 py-1 rounded cyber-chip">Hack The Box: 116</span>
                     <span className="text-xs px-2 py-1 rounded cyber-chip">TryHackMe: 109</span>
                   </div>
                 </div>
